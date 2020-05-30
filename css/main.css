@@ -1,0 +1,32 @@
+#header {
+  margin: 50px 0;
+  text-align: center;
+}
+
+#header > .header-action-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#header > .header-action-buttons > button {
+  margin: 0 10px;
+} 
+
+#content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#content > .card {
+  width: 18rem;
+  margin: 10px;
+}
+
+#content > .card > .card-body.success {
+  background-color: rgba(40, 167, 69, 0.5)!important;
+}
+
+#content > .card > .card-body > .card-body-action-buttons {
+  display: flex;
+  justify-content: space-between;
+}
