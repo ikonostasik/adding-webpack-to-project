@@ -1,8 +1,7 @@
-import { TaskManager } from './javascript/task-manager'
-
+import { TaskManager } from './javascript/task-manager';
 
 function initApp() {
-  const taskManager = new TaskManager('content')
+  const taskManager = new TaskManager('content');
   taskManager.initTasks();
 }
 

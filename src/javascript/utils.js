@@ -5,7 +5,7 @@ function createElement(tag, className, text) {
     element.className = className;
   }
 
-  if(text) {
+  if (text) {
     element.textContent = text;
   }
 
