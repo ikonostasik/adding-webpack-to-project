@@ -1,4 +1,6 @@
-class Task {
+import createElement from './utils';
+
+export class Task {
   constructor(card) {
     //Link to a card object (will mutate)
     this.card = card;
@@ -11,10 +13,14 @@ class Task {
     this.finishButton = createElement('button', 'btn btn-primary', card.buttonText);
     this.removeButton = createElement('button', 'btn btn-danger', 'Remove');
 
-    this.initTaskElement();
+    //binding context to functions in order to have "this" 
+    this.changeTaskStateHandler = this.changeTaskStateHandler.bind(this);
+    this.deleteTaskHandler = this.deleteTaskHandler.bind(this);
+
+    this.initTaskElement();    
   }
 
-  changeTaskStateHandler = () => {
+  changeTaskStateHandler() {
     this.card.finished = !this.card.finished;      
     if(this.card.finished) {
       this.cardBody.className += ' success';
@@ -27,7 +33,7 @@ class Task {
     this.finishButton.textContent = this.card.description;
   }
 
-  deleteTaskHandler = () => {
+  deleteTaskHandler() {
     if(confirm('Are you sure you want to delete this task?')) {
       this.finishButton.removeEventListener('click', this.changeTaskStateHandler);
       this.removeButton.removeEventListener('click', this.deleteTaskHandler);
@@ -37,7 +43,7 @@ class Task {
   }
 
 
-  initTaskElement = () => {
+  initTaskElement() {
     if(this.card.finished) {
       this.cardBody.className += ' success';
     };

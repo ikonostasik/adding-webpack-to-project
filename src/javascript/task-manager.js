@@ -1,5 +1,6 @@
+import { Task } from './task';
 
-class TaskManager {
+export class TaskManager {
   constructor(wrapperId) {
     this.cards =  [{
       title: 'Card title',
@@ -21,6 +22,11 @@ class TaskManager {
     }]
     
     this.cardsWrapper = document.getElementById(wrapperId);
+
+    //binding context to functions in order to have "this" 
+
+    this.insertTask = this.insertTask.bind(this);
+    this.createTaskHandler = this.createTaskHandler.bind(this);
   }
 
   initTasks() {  
@@ -28,9 +34,10 @@ class TaskManager {
 
     const createTaskButton = document.getElementById('create-task');
     
-    createTaskButton.addEventListener('click', this.createTaskHandler);  }
+    createTaskButton.addEventListener('click', this.createTaskHandler);  
+  }
 
-  createTaskHandler = () => {  
+  createTaskHandler() {  
     const taskTitle = prompt('Enter task name');
     const taskDescription = prompt('Enter task description');
     const newTask = {
@@ -44,16 +51,9 @@ class TaskManager {
     this.insertTask(newTask)
   }
   
-  insertTask = (task_object) => {
+  insertTask(task_object) {
     const task = new Task(task_object)
     this.cardsWrapper.insertAdjacentElement('beforeend',task.el)
-  }
-
-  removeTasksHandler = () => {
-    if(confirm('Are you sure you want to remove all tasks?')) {
-      this.cards = [];
-      this.cardsWrapper.innerHTML = ''; 
-    }
   }
 }
 
