@@ -27,11 +27,8 @@ class TaskManager {
     this.cards.forEach(this.insertTask)
 
     const createTaskButton = document.getElementById('create-task');
-    const removeTasksButton = document.getElementById('remove-tasks');
-
-    createTaskButton.addEventListener('click', this.createTaskHandler);
-    removeTasksButton.addEventListener('click', this.removeTasksHandler);
-  }
+    
+    createTaskButton.addEventListener('click', this.createTaskHandler);  }
 
   createTaskHandler = () => {  
     const taskTitle = prompt('Enter task name');
