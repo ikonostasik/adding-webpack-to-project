@@ -9,13 +9,14 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.s[ac]ss$/i,
         // Loaders have reversed order
         use: [
           'style-loader', // Works second -> insert css via <style> to html page
-          'css-loader' // Works first -> transform css into js 
+          'css-loader', // Works first -> transform css into js
+          'sass-loader' // Works first -> transform sass|scss into css
         ]
       }
     ]
   }
-}
+};
