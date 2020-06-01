@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: path.resolve(__dirname, './src/index.js'),
@@ -13,8 +14,8 @@ module.exports = {
         test: /\.s[ac]ss$/i,
         // Loaders have reversed order
         use: [
-          'style-loader', // Works second -> insert css via <style> to html page
-          'css-loader', // Works first -> transform css into js
+          MiniCssExtractPlugin.loader,
+          'css-loader', // Works second -> transform css into js
           'sass-loader' // Works first -> transform sass|scss into css
         ]
       }
@@ -24,6 +25,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       minify: false,
       template: path.resolve(__dirname, './index.html')
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css'
     })
   ]
 };
