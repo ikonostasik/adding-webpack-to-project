@@ -8,4 +8,4 @@ npm install
 npm start
 
 ## To build the project type in console
-npm run buile
+npm run build
