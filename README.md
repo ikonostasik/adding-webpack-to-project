@@ -1,7 +1,7 @@
 # adding-webpack-to-project
 This is just simple webpack implementation into existing project.
 
-### `To instal all dependencies type in console`
+### `To install all dependencies type in console`
 
 npm install
 
